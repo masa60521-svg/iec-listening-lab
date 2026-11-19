@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1730">
+<title>IEC Listening Lab — IEC会議リスニング専用トレーナー</title>
+<style>
+:root{--navy:#09172d;--navy2:#102649;--sky:#1e63ee;--mint:#00ad99;--ink:#162744;--muted:#60718a;--line:#e5eaf2;--paper:#f4f7fb;--white:#fff;--gold:#ffa94d;--focus:#78b8ff;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;line-height:1.65}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.52;cursor:not-allowed}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.app{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:100vh}
+aside{background:var(--navy);color:#fff;padding:29px 19px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;gap:13px;align-items:center;padding:3px 7px 24px}
+.brandmark{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:linear-gradient(135deg,#59d8ef,#3e76f7);box-shadow:0 7px 20px #08132390;color:#071f43;font-weight:900;letter-spacing:-1.5px;font-size:18px}
+.brand small{display:block;font-size:11px;color:#a3b6d3;font-weight:700;letter-spacing:1.7px}.brand strong{display:block;font-size:16px;letter-spacing:.25px}
+.sideinfo{border:1px solid #2a4062;border-radius:17px;background:#112545;padding:17px 16px;margin-bottom:27px}
+.sideinfo .caption{font-size:12px;color:#a8b9d3}.sideinfo .value{font-size:20px;font-weight:800;margin:5px 0 9px}.progress{height:7px;border-radius:20px;background:#2a3b56;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#4c99ff,#5ce1c8);transition:width .25s}
+.sideheading{font-size:11px;color:#87a0c4;padding:0 12px 10px;letter-spacing:2px;font-weight:800}
+.lessons{display:flex;flex-direction:column;gap:6px}
+.lessonitem{border:1px solid transparent;background:transparent;color:#cbd8ec;width:100%;text-align:left;display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;transition:.15s}
+.lessonitem:hover{background:#172d4d}.lessonitem.active{background:#193961;border-color:#386695;color:#fff}
+.lnum{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#203452;color:#aebeda;font-size:12px;font-weight:800}
+.lessonitem.active .lnum{background:#3575db;color:white}.lessonitem.done .lnum{background:#13685f;color:#bbfff0}
+.ltext{min-width:0}.ltitle{font-size:13px;font-weight:800;line-height:1.4}.lsub{font-size:11px;color:#8da4c6;margin-top:3px}.lessonitem.active .lsub{color:#a9c8f9}
+.sidefooter{color:#8da4c6;font-size:11px;margin:24px 10px 10px;border-top:1px solid #2b3b53;padding-top:17px}
+main{min-width:0;padding:31px clamp(20px,4.1vw,66px) 60px;max-width:1320px;width:100%;margin:0 auto}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:0 0 18px}.overline{font-size:12px;letter-spacing:1.6px;color:#73829c;font-weight:850}.shortcut{font-size:11px;color:#8291a9}
+.hero{background:radial-gradient(circle at 92% 14%,#286ae7 0%,transparent 30%),linear-gradient(123deg,#0d2244 0%,#132b54 58%,#134576 100%);color:#fff;border-radius:23px;padding:clamp(24px,4vw,41px);position:relative;overflow:hidden;min-height:216px;box-shadow:0 16px 30px #0b234124}
+.hero:after{content:"";position:absolute;width:310px;height:310px;border:1px solid #a5ccff25;border-radius:50%;top:-134px;right:-71px;box-shadow:0 0 0 42px #92bdff0b,0 0 0 85px #92bdff07;pointer-events:none}
+.hero .eyebrow{color:#98ddec;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:850}.hero h1{font-size:clamp(24px,3vw,35px);line-height:1.35;margin:13px 0 11px;max-width:730px}.hero p{font-size:13px;color:#bcd2ed;margin:0;max-width:650px}.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.pill{font-size:11px;font-weight:800;border:1px solid #ffffff45;padding:5px 11px;border-radius:100px;background:#ffffff13}
+.contentgrid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(255px,1fr);align-items:start;gap:19px;margin-top:21px}.colstack{display:flex;flex-direction:column;gap:19px;min-width:0}
+.panel{background:var(--white);border:1px solid #e7ecf4;border-radius:19px;box-shadow:0 5px 16px #112a4710;padding:24px;min-width:0}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:15px}.panelhead h2{font-size:16px;letter-spacing:-.3px;margin:0}.hint{font-size:11px;color:#8190a7}
+.modebar{display:flex;background:#edf2f8;border-radius:12px;padding:4px;gap:3px;margin-bottom:20px}
+.modebtn{flex:1;min-width:0;border:0;background:transparent;padding:9px 6px;border-radius:9px;color:#536982;font-weight:750;font-size:12px;white-space:nowrap}
+.modebtn.active{background:#fff;color:#1851bd;box-shadow:0 2px 7px #26385117}
+.audiozone{display:flex;flex-direction:column;align-items:center;gap:18px;padding:16px 6px 22px;border-radius:15px;background:linear-gradient(180deg,#f4f9ff,#fff);border:1px solid #e8f0fc}
+.wave{height:39px;display:flex;align-items:center;justify-content:center;gap:5px}.bar{width:5px;border-radius:10px;background:linear-gradient(#48c9c9,#357bea);height:var(--h);opacity:.7}.wave.active .bar{animation:pulse .75s ease-in-out infinite alternate;animation-delay:var(--d)}@keyframes pulse{to{height:6px;opacity:.36}}
+.player{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}.round{display:grid;place-items:center;border:0;border-radius:50%;width:47px;height:47px;background:#e7eef9;color:#254b81;font-weight:800;font-size:20px}.round.primary{width:72px;height:72px;background:linear-gradient(135deg,#2457e2,#3d83fa);box-shadow:0 9px 22px #2c71e853;color:#fff;font-size:30px}.round:hover{filter:brightness(.96)}
+.status{min-height:23px;font-size:12px;color:#607492;text-align:center}.controls{display:grid;grid-template-columns:minmax(0,1fr) 125px;gap:15px;margin:21px 0 7px}.ctrl label{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:7px}.ctrl label span{color:#285bc8;font-weight:800}input[type=range]{width:100%;accent-color:#2e6af0;cursor:pointer;margin-top:8px}select{width:100%;height:40px;background:#f7faff;border:1px solid #dce6f5;border-radius:9px;color:#254267;padding:0 9px;font-size:12px}
+.voice-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;border-top:1px solid var(--line);padding-top:14px}.voice-row label{font-size:11px;color:#637690;font-weight:750}.voice-row select{max-width:67%}
+.remark{display:flex;gap:9px;font-size:11px;color:#657992;background:#f1f6fd;padding:11px 12px;border-radius:10px;margin-top:16px}.mark{color:#2079d7;font-weight:bold;flex:none}
+.transcriptIntro{display:flex;gap:10px;justify-content:space-between;align-items:center}.subtle{font-size:11px;color:#798aa2}.softbtn{border:1px solid #cfdef1;background:#f3f8ff;color:#245eb3;padding:8px 13px;border-radius:9px;font-size:12px;font-weight:800;white-space:nowrap}.softbtn:hover{background:#e8f2ff}
+.script-lines{margin-top:15px;display:flex;flex-direction:column;gap:8px}.script-row{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;background:#f8fafd;border:1px solid #edf1f8;border-radius:10px;padding:11px 13px;align-items:start}.script-num{color:#6082b7;font-size:11px;font-weight:800;padding-top:3px}.en{font-size:13px;line-height:1.75;font-weight:650;color:#1a355a}.jp{margin-top:4px;color:#74839b;font-size:11.5px;line-height:1.65}.placeholder{margin-top:17px;background:#f8faff;border:1px dashed #c9d8ed;color:#6d7f99;text-align:center;padding:22px 15px;border-radius:12px;font-size:12px}
+.phrase-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:9px}.phrasebtn{border:1px solid #d8e5f7;background:#f5f9ff;border-radius:10px;padding:12px 4px;font-size:12px;font-weight:800;color:#2b60b9}.phrasebtn:hover{background:#e9f2ff}.phrase-list-note{font-size:11px;color:#798aa2;margin-top:12px}
+.quizitem{padding:14px 0;border-top:1px solid #eaf0f8}.quizitem:first-child{border-top:0;padding-top:3px}.qtop{display:flex;align-items:center;justify-content:space-between;gap:8px}.qno{font-weight:850;color:#436baf;font-size:12px}.qspeak{border:1px solid #ccddf5;border-radius:8px;background:#eff6ff;color:#255dc2;padding:6px 11px;font-size:11px;font-weight:850}.qreveal{font-size:12px;color:#58708b;background:#f6f9fc;border-radius:9px;padding:10px;margin-top:8px}.choices{display:flex;flex-direction:column;gap:7px;margin-top:13px}.choice{border:1px solid #dfe6f1;background:#fff;color:#435774;text-align:left;border-radius:9px;padding:9px 11px;font-size:12px;transition:.12s}.choice:hover{background:#f4f8ff}.choice.right{background:#e6f8f2;border-color:#73cbb0;color:#09694f;font-weight:800}.choice.wrong{background:#fff0ec;border-color:#f4ada1;color:#9c4036}.qfeedback{font-size:11px;color:#547289;margin-top:9px}.mode-content{margin-top:3px}.hidden{display:none!important}
+.memo{width:100%;min-height:115px;resize:vertical;background:#fafcfe;border:1px solid #dce6f2;border-radius:11px;padding:12px;font-size:13px;color:#243c5c;line-height:1.7}.memo::placeholder{color:#9baac0}
+.completebtn{width:100%;border:0;border-radius:11px;background:#163c70;color:#fff;padding:13px;font-size:13px;font-weight:850;margin-top:12px}.completebtn.done{background:#0a766a}.completebtn:hover{filter:brightness(1.1)}
+.training{background:#eaf6f5;border:1px solid #cfebe5;border-radius:13px;padding:15px 16px}.training .tag{font-size:10px;letter-spacing:1.3px;font-weight:850;color:#087e71}.training p{margin:8px 0 0;color:#30575c;font-size:12px;line-height:1.85}
+.sectionLabel{font-size:12px;font-weight:850;color:#425574;margin:0 0 7px}.explain{color:#668099;font-size:11px;margin-top:10px}
+.mobile-lesson-picker{display:none;background:var(--navy);padding:12px 20px}.mobile-lesson-picker label{font-size:11px;color:#b5cce7;display:block;margin-bottom:5px}.mobile-lesson-picker select{max-width:100%;background:#193253;color:#fff;border-color:#365476}
+footer{margin-top:24px;text-align:center;color:#8394aa;font-size:11px;line-height:1.7}
+@media(max-width:1050px){.app{grid-template-columns:242px minmax(0,1fr)}aside{padding:23px 12px}.contentgrid{grid-template-columns:1fr}.colstack{display:contents}.contentgrid>.colstack>.panel:nth-child(1){order:1}.contentgrid>.colstack>.panel:nth-child(2){order:3}.contentgrid>.colstack:nth-child(2)>.panel:first-child{order:2}.contentgrid>.colstack:nth-child(2)>.panel:nth-child(2){order:4}.contentgrid>.colstack:nth-child(2)>.training{order:5}.contentgrid{display:flex;flex-direction:column}.contentgrid>.colstack>*{width:100%}}
+@media(max-width:730px){.app{display:block}aside{display:none}.mobile-lesson-picker{display:block}main{padding:20px 14px 44px}.topline{margin-bottom:11px}.shortcut{display:none}.hero{padding:25px 22px;min-height:204px}.hero h1{font-size:26px}.panel{padding:19px;border-radius:16px}.contentgrid{gap:14px;margin-top:14px}.controls{grid-template-columns:minmax(0,1fr) 112px}.voice-row{align-items:flex-start;flex-direction:column}.voice-row select{max-width:100%}.phrase-list{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="mobile-lesson-picker"><label for="mobileLesson">レッスンを選ぶ</label><select id="mobileLesson"></select></div>
+<div class="app">
+<aside>
+<div class="brand"><div class="brandmark">IEC</div><div><small>LISTENING LAB</small><strong>会議英語トレーナー</strong></div></div>
+<div class="sideinfo"><div class="caption">学習したレッスン</div><div class="value" id="completedCount">0 / 8</div><div class="progress"><div id="progressFill"></div></div></div>
+<div class="sideheading">IEC TC82 / PSC TOPICS</div><nav id="lessonList" class="lessons" aria-label="レッスン選択"></nav>
+<div class="sidefooter">英文を隠して耳だけで理解する練習です。英語音声は端末・ブラウザの音声合成を利用します。</div>
+</aside>
+<main>
+<div class="topline"><div class="overline">IEC TC82 WG2 · MEETING LISTENING</div><div class="shortcut">ショートカット: Space = 再生 / 一時停止　R = 最初から　H = 英文表示</div></div>
+<section class="hero" aria-live="polite"><div class="eyebrow" id="lessonLabel">LESSON 01 / 08</div><h1 id="lessonTitle">SPOと測定タイミング</h1><p id="lessonContext"></p><div class="pills"><span class="pill" id="tagTopic">SPO</span><span class="pill">米国英語 TTS</span><span class="pill" id="wordCount">約 90 words</span></div></section>
+<div class="contentgrid">
+<div class="colstack">
+<section class="panel" aria-label="音声プレーヤー">
+<div class="panelhead"><h2>01　耳で聞く</h2><span class="hint">まず英文を見ずに聞く</span></div>
+<div class="modebar" role="tablist" aria-label="練習モード"><button type="button" class="modebtn active" data-mode="full" role="tab" aria-selected="true">通し聴き</button><button type="button" class="modebtn" data-mode="phrases" role="tab" aria-selected="false">1文ずつ</button><button type="button" class="modebtn" data-mode="qa" role="tab" aria-selected="false">質問を聞く</button></div>
+<div class="audiozone"><div class="wave" id="wave" aria-hidden="true"><span class="bar" style="--h:14px;--d:-.12s"></span><span class="bar" style="--h:26px;--d:-.38s"></span><span class="bar" style="--h:20px;--d:-.18s"></span><span class="bar" style="--h:34px;--d:-.54s"></span><span class="bar" style="--h:24px;--d:-.17s"></span><span class="bar" style="--h:37px;--d:-.29s"></span><span class="bar" style="--h:22px;--d:-.68s"></span><span class="bar" style="--h:31px;--d:-.46s"></span><span class="bar" style="--h:15px;--d:-.1s"></span></div>
+<div class="player"><button type="button" class="round" id="restartBtn" title="最初から聴く" aria-label="最初から再生">↺</button><button type="button" class="round primary" id="playBtn" title="再生・一時停止" aria-label="再生">▶</button><button type="button" class="round" id="stopBtn" title="停止" aria-label="停止">■</button></div><div class="status" id="audioStatus" aria-live="polite">▶ を押すと読み上げます</div></div>
+<div class="controls"><div class="ctrl"><label for="speed">読み上げ速度 <span id="speedValue">0.90×</span></label><input type="range" id="speed" min="0.65" max="1.20" step="0.05" value="0.90" aria-label="読み上げ速度"></div><div class="ctrl"><label for="repeatCount">繰り返し</label><select id="repeatCount"><option value="1">1回</option><option value="2">2回</option><option value="3">3回</option><option value="5">5回</option></select></div></div>
+<div class="voice-row"><label for="voiceSelect">英語音声（利用可能な音声から選択）</label><select id="voiceSelect" aria-label="読み上げ音声"><option value="">ブラウザの標準音声</option></select></div>
+<div class="remark"><span class="mark">ⓘ</span><span>速度はブラウザ音声の相対値です。実際の WPM は端末・音声によって異なります。米国英語の音声があれば優先して選びます。</span></div>
+<div class="mode-content hidden" id="phraseArea"><div class="sectionLabel">聞きたい文だけを繰り返す</div><div class="phrase-list" id="phraseList"></div><div class="phrase-list-note">文字は表示せず、文番号を押すとその文だけ再生します。</div></div>
+<div class="mode-content hidden" id="qaIntro"><div class="sectionLabel">会議での質問を音だけで理解する</div><div class="explain">再生すると下の「聞き取りクイズ」の質問を順に読みます。1問ずつ再生することもできます。</div></div>
+</section>
+<section class="panel" aria-label="英文と日本語訳"><div class="panelhead"><h2>02　答え合わせ</h2><button type="button" id="showTranscript" class="softbtn" aria-expanded="false">英文を表示</button></div><div class="transcriptIntro"><div class="subtle">最初は文字を隠して、聞こえた内容を確認しましょう。</div></div><div id="hiddenTranscript" class="placeholder">🔒　英文・日本語訳は隠れています。<br>聞き終わってから「英文を表示」を押してください。</div><div id="scriptLines" class="script-lines hidden"></div></section>
+</div>
+<div class="colstack">
+<section class="panel" aria-label="聞き取りクイズ"><div class="panelhead"><h2>03　聞き取りクイズ</h2><span class="hint">全2問</span></div><p class="subtle">青い「質問を聴く」を押し、英語の質問を聞いてから、日本語の選択肢を選んでください。</p><div id="quizItems"></div></section>
+<section class="panel" aria-label="聞き取りメモ"><div class="panelhead"><h2>04　聞こえたことをメモ</h2><span class="hint">自動保存</span></div><textarea id="memo" class="memo" placeholder="例：SPO、fixed voltage、power is still changing...&#10;日本語でも英語でもOK。聞こえた言葉を残しましょう。" aria-label="リスニングメモ"></textarea><button type="button" class="completebtn" id="completeBtn">✓ このレッスンを完了にする</button></section>
+<section class="training"><div class="tag">TODAY'S LISTENING TIP</div><p id="tip"></p></section>
+</div>
+</div>
+<footer>IEC Listening Lab · 個人学習用 / IECの公式アプリではありません。<br>音声は端末のTTS（合成音声）であり、実際の会議録音ではありません。</footer>
+</main>
+</div>
+<script>
+'use strict';
+const lessons = [
+{
+ title:'SPO：最後のI–V測定はいつ行う？',short:'SPOと測定タイミング',tag:'SPO / I–V',context:'IEC会議で、固定電圧で出力を見ながら測定タイミングを決める提案を聞き取ります。',tip:'「If the power is still changing, ...」の後に来る結論を予測して聞いてみましょう。if から始まる条件文は会議で頻出です。',
+ lines:[
+ ['Before we compare results, we should agree on one simple rule.','結果を比較する前に、ひとつの簡単なルールについて合意すべきです。'],
+ ['Some perovskite solar cells change slowly after light soaking.','ペロブスカイト太陽電池の中には、光照射後にゆっくり変化するものがあります。'],
+ ['So, one quick I-V scan may not tell us the whole story.','そのため、一度の速いI–V測定だけでは全体を把握できないかもしれません。'],
+ ['We can watch the power over time at a fixed voltage near the expected peak.','予想最大出力点近傍の固定電圧で出力の時間変化を観察できます。'],
+ ['This helps us see whether the device is still changing.','これにより、デバイスがまだ変化しているか確認できます。'],
+ ['If the power becomes flat enough, we can take the final I-V scan with confidence.','出力の変化が十分に小さくなれば、安心して最終I–V測定を行えます。'],
+ ['If the power is still changing, we should wait and record that fact.','出力がまだ変化していれば、待つとともにその事実を記録すべきです。'],
+ ['Could we use the same checking period in every lab?','どの試験所でも同じ確認時間を使えないでしょうか。'],
+ ['That would make our results easier to compare.','そうすれば結果を比較しやすくなります。']
+ ],qs:[
+ {text:'What should we check before the final I-V scan?',choices:['出力が安定しているか','セルの色が変わるか','測定者が交代したか'],correct:0,why:'The speaker suggests checking whether the power is still changing.'},
+ {text:'Why should all labs use the same checking period?',choices:['セルを冷却するため','結果の比較を容易にするため','測定電圧を高くするため'],correct:1,why:'The purpose is to make results easier to compare.'}
+ ]},
+{
+ title:'Settling：安定判定をどう決める？',short:'Settlingと判定',tag:'Settling / Criteria',context:'安定化の判断において「時間」と「変化率」をどう扱うか、提案と未決事項を聞き取ります。',tip:'「I suggest ...」は提案、「We have not agreed ... yet」はまだ合意していないという意味です。確定事項と提案を聞き分けましょう。',
+ lines:[
+ ['I would like to discuss how we decide that a device is stable.','デバイスの安定をどう判定するか議論したいと思います。'],
+ ['Different labs may use different waiting times.','試験所によって待ち時間が異なるかもしれません。'],
+ ['But a fixed time alone may not be enough.','しかし、固定した時間だけでは不十分かもしれません。'],
+ ['We also need to look at how fast the power changes.','出力がどれほど速く変化するかも見る必要があります。'],
+ ['I suggest checking the power over a clear assessment window.','明確な判定時間幅で出力を確認することを提案します。'],
+ ['Then we can calculate the change per minute.','そのうえで1分あたりの変化を計算できます。'],
+ ['We should state the checking method in our report.','報告書には確認方法を明記すべきです。'],
+ ['We have not agreed on a final limit yet.','最終的な閾値についてはまだ合意していません。'],
+ ['Could we review the round-robin data before making a decision?','決定の前にラウンドロビンのデータを確認できませんか。']
+ ],qs:[
+ {text:'Why is a fixed waiting time not enough?',choices:['時間だけでは出力の変化を確認できないから','測定器の数が不足しているから','セルを冷却する必要があるから'],correct:0,why:'The change in power over time also matters.'},
+ {text:'Has the group agreed on a final limit?',choices:['はい、すでに確定しています','いいえ、まだ合意していません','会議では話題にしていません'],correct:1,why:'The speaker says, “We have not agreed on a final limit yet.”'}
+ ]},
+{
+ title:'I–V：ヒステリシスをどう扱う？',short:'I–Vとヒステリシス',tag:'I–V / Hysteresis',context:'順方向と逆方向のスキャンで結果が違う場合の、確認と報告について聞き取ります。',tip:'「forward」「reverse」「scan direction」「scan speed」がキーワードです。数字よりも、二つの条件の比較に注目してください。',
+ lines:[
+ ['We measured the same perovskite cell in two scan directions.','同じペロブスカイトセルを二つの掃引方向で測定しました。'],
+ ['The forward and reverse scans gave different power values.','順方向と逆方向で異なる出力値が得られました。'],
+ ['This difference may be related to hysteresis.','この差はヒステリシスに関係している可能性があります。'],
+ ['The scan speed can also affect the result.','掃引速度も結果に影響することがあります。'],
+ ['So, we need to report both the direction and the speed.','そのため、掃引方向と速度の両方を報告する必要があります。'],
+ ['I suggest repeating each scan to check reproducibility.','再現性を確認するため各測定を繰り返すことを提案します。'],
+ ['We should not choose only the highest value.','最も高い値だけを選ぶべきではありません。'],
+ ['Can we agree on a clear reporting format?','明確な報告形式について合意できるでしょうか。'],
+ ['That would help us understand differences between labs.','それにより試験所間の差を理解しやすくなります。']
+ ],qs:[
+ {text:'What two scan conditions should be reported?',choices:['方向と速度','天気と湿度','セルの厚さと色'],correct:0,why:'Both scan direction and scan speed should be reported.'},
+ {text:'Should we report only the highest value?',choices:['はい、最高値だけで十分です','いいえ、それだけを選ぶべきではありません','最高値を二倍にします'],correct:1,why:'The speaker says not to choose only the highest value.'}
+ ]},
+{
+ title:'MPPTとSPO：二つの方法を比べる',short:'MPPTとSPO',tag:'MPPT / SPO',context:'MPPTとSPOの特徴について、測定アルゴリズムと報告内容の議論を聞き取ります。',tip:'「while」は対比を表すことがあります。MPPTは電圧を調整し、SPOは電圧を固定する、という違いをまずつかみましょう。',
+ lines:[
+ ['We have two ways to follow the power over time.','出力の時間変化を追う方法が二つあります。'],
+ ['One is maximum power point tracking, or MPPT.','ひとつは最大出力点追従、すなわちMPPTです。'],
+ ['With MPPT, the system adjusts the operating voltage.','MPPTではシステムが動作電圧を調整します。'],
+ ['The other method is steady-state power observation, or SPO.','もうひとつは定常状態の出力観察、SPOです。'],
+ ['With SPO, we keep the voltage fixed near the expected power peak.','SPOでは予想出力ピーク近くで電圧を固定します。'],
+ ['Both methods can tell us how the power changes.','どちらの方法でも出力変化を確認できます。'],
+ ['However, the measurement conditions are not exactly the same.','ただし、測定条件はまったく同じではありません。'],
+ ['For MPPT, we should describe the tracking algorithm.','MPPTでは追従アルゴリズムを説明すべきです。'],
+ ['For SPO, we should report the fixed voltage and observation period.','SPOでは固定電圧と観察時間を報告すべきです。']
+ ],qs:[
+ {text:'Which method changes the operating voltage?',choices:['MPPT','SPO','どちらも電圧を変えません'],correct:0,why:'MPPT adjusts the operating voltage.'},
+ {text:'What should be reported for SPO?',choices:['固定電圧と観察時間','研究者の年齢','セルの販売価格'],correct:0,why:'Report the fixed voltage and the observation period.'}
+ ]},
+{
+ title:'露光履歴：測定前に何があった？',short:'露光履歴と前処理',tag:'Light Soaking',context:'光照射や暗所保持など、測定前の履歴が結果に影響する理由を聞き取ります。',tip:'「before」「after」「during」に注意すると、手順の前後関係を追いやすくなります。聞き取りでは時系列をメモしましょう。',
+ lines:[
+ ['Before we compare the results, we need to check the device history.','結果を比較する前にデバイスの履歴を確認する必要があります。'],
+ ['Perovskite cells can respond to light and electrical bias.','ペロブスカイトセルは光と電気的バイアスに応答することがあります。'],
+ ['The power may change after light soaking.','光照射後に出力が変化することがあります。'],
+ ['It may also change after a period in the dark.','暗所に置いた後にも変化することがあります。'],
+ ['Therefore, we should record the conditions before measurement.','したがって、測定前の条件を記録すべきです。'],
+ ['Was the cell kept in the dark or under light?','セルは暗所に置かれていましたか、それとも光照射下でしたか。'],
+ ['How long was it kept under those conditions?','その条件でどれくらい保持されていましたか。'],
+ ['Did we apply any voltage during the preparation?','準備中に電圧を印加しましたか。'],
+ ['These details can explain differences between laboratories.','これらの詳細が試験所間の差を説明することがあります。']
+ ],qs:[
+ {text:'Why should we record the device history?',choices:['測定結果の差を理解するため','ラベルの色を決めるため','測定場所を予約するため'],correct:0,why:'The history may explain differences between laboratories.'},
+ {text:'Which condition does the speaker ask about?',choices:['暗所か光照射下か','晴天か曇天か','室内か屋外かだけ'],correct:0,why:'The question is whether the cell was kept in the dark or under light.'}
+ ]},
+{
+ title:'RRT：ラボ間で結果を比較する',short:'RRTと再現性',tag:'Round Robin',context:'ラウンドロビン試験で違いが生じたとき、測定条件を確認して原因を議論する場面です。',tip:'「not necessarily」は「必ずしも～とは限らない」という意味。相手の指摘を柔らかく修正する会議表現です。',
+ lines:[
+ ['Our round-robin results show some differences between laboratories.','ラウンドロビン結果には試験所間でいくつか差が見られます。'],
+ ['This does not necessarily mean that one lab is wrong.','これは必ずしもどこかの試験所が間違っていることを意味しません。'],
+ ['The devices may have changed during transport or storage.','輸送や保管中にデバイスが変化した可能性があります。'],
+ ['The measurement methods may also be different.','測定方法が異なる可能性もあります。'],
+ ['We should first compare the light soaking conditions.','まず光照射条件を比較すべきです。'],
+ ['Then we should look at the settling check and I-V scan settings.','次に安定判定とI–V掃引条件を確認すべきです。'],
+ ['Could each lab share its measurement log?','各試験所で測定ログを共有できないでしょうか。'],
+ ['That information will help us find the main causes.','その情報は主な原因の特定に役立ちます。'],
+ ['We can use these findings to improve our proposed IEC procedure.','これらの知見をIEC手順案の改善に利用できます。']
+ ],qs:[
+ {text:'Does a difference between labs always mean someone is wrong?',choices:['はい、必ずそうです','いいえ、必ずしもそうではありません','違いは測定できません'],correct:1,why:'The speaker says, “This does not necessarily mean that one lab is wrong.”'},
+ {text:'What does the speaker ask labs to share?',choices:['測定ログ','旅行計画','予算だけ'],correct:0,why:'Each lab is asked to share its measurement log.'}
+ ]},
+{
+ title:'結果報告：まだ安定していない場合',short:'Non-settledの報告',tag:'Reporting',context:'十分に安定しないセルの測定値を、どう透明性を保って報告するかについての議論です。',tip:'「Even if ...」は「たとえ～でも」。「instead of ...」は「～する代わりに」。結論を示す接続表現に注目しましょう。',
+ lines:[
+ ['Sometimes the power continues to change for a long time.','出力が長時間変化し続ける場合があります。'],
+ ['In that case, we may not reach a stable value during the test.','その場合、試験中に安定値に到達しないかもしれません。'],
+ ['We still need to report what we observed.','それでも観察した内容を報告する必要があります。'],
+ ['We should clearly state that the device did not settle.','デバイスが安定化しなかったことを明記すべきです。'],
+ ['We should also record the time and the measurement conditions.','時間と測定条件も記録すべきです。'],
+ ['This is better than reporting a number without explanation.','説明なしに数値を報告するより適切です。'],
+ ['The reader needs to know how the value was obtained.','読者はその数値の取得方法を知る必要があります。'],
+ ['Can we make the wording consistent across laboratories?','試験所間で記載表現を統一できないでしょうか。'],
+ ['Clear reporting is important for future comparisons.','明確な報告は将来の比較に重要です。']
+ ],qs:[
+ {text:'What should we say if the device does not settle?',choices:['安定化しなかったことを明記する','安定したと書く','測定値を削除する'],correct:0,why:'The report should clearly state that the device did not settle.'},
+ {text:'Why are time and conditions important?',choices:['数値をどう得たかを理解するため','会議を短くするため','試料を売るため'],correct:0,why:'Readers need to know how the reported value was obtained.'}
+ ]},
+{
+ title:'標準化会議：合意をまとめる',short:'意見調整と合意',tag:'IEC Discussion',context:'複数の提案が出た後、争点・次の作業・合意可能な点を整理する会議場面です。',tip:'「I agree with ... but ...」は部分的に同意しつつ懸念を示す表現。「For now」は今の段階では、という限定です。',
+ lines:[
+ ['Thank you for the useful comments.','有益なコメントをありがとうございます。'],
+ ['I think we all agree that reproducibility is important.','再現性が重要だという点では皆さんが合意していると思います。'],
+ ['However, we still have different views on the settling limit.','しかし、安定判定の閾値についてはまだ意見が分かれています。'],
+ ['I agree with the main idea, but I have one concern.','主な考えには賛成ですが、懸念がひとつあります。'],
+ ['A strict limit may not work for every type of device.','厳しい閾値はすべてのデバイスに適用できない可能性があります。'],
+ ['Could we separate the measurement method from the reporting rule?','測定方法と報告ルールを分けてはどうでしょうか。'],
+ ['For now, let us identify what we can agree on.','まず現段階で合意できる事項を特定しましょう。'],
+ ['We can review the remaining points after looking at more data.','残る論点は追加データの確認後に検討できます。'],
+ ['Does anyone have an objection to that approach?','この進め方に異議はありますか。']
+ ],qs:[
+ {text:'What is the main unresolved issue?',choices:['安定判定の閾値','会議室の場所','装置の色'],correct:0,why:'There are still different views on the settling limit.'},
+ {text:'What does the speaker propose to do first?',choices:['合意できる事項を特定する','直ちにすべて決定する','追加データを無視する'],correct:0,why:'The speaker says, “For now, let us identify what we can agree on.”'}
+ ]}
+];
+
+const $=id=>document.getElementById(id);
+const safeGet=(key,fallback)=>{try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch(e){return fallback}};
+const safeSet=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}};
+let selected=Number(safeGet('iec_lesson_v1',0));if(!Number.isInteger(selected)||selected<0||selected>=lessons.length)selected=0;
+let completed=safeGet('iec_completed_v1',[]);if(!Array.isArray(completed))completed=[];
+let mode='full', transcriptShown=false, choicesByLesson={}, currentVoiceList=[];
+let playing=false,paused=false,token=0,pendingTimer=null,playItems=[],playIndex=0,loopIndex=0,playLabel='',playMode='full';
+let lastPlay={type:'full'};
+const hasSpeech=('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window);
+const sayClean=s=>s.replace(/I[–-]V/gi,'I V').replace(/\bSPO\b/g,'S P O').replace(/\bMPPT\b/g,'M P P T').replace(/\bRRT\b/g,'R R T').replace(/\bPSC\b/g,'P S C').replace(/\bIEC\b/g,'I E C').replace(/\bTC82\b/g,'T C eighty two');
+function updateProgress(){const n=completed.filter(x=>Number.isInteger(x)&&x>=0&&x<lessons.length).length;$('completedCount').textContent=`${n} / ${lessons.length}`;$('progressFill').style.width=`${100*n/lessons.length}%`;}
+function renderLessonNav(){const nav=$('lessonList');nav.innerHTML='';const sel=$('mobileLesson');sel.innerHTML='';lessons.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.className=`lessonitem ${i===selected?'active':''} ${completed.includes(i)?'done':''}`;b.setAttribute('aria-current',i===selected?'page':'false');const n=document.createElement('span');n.className='lnum';n.textContent=completed.includes(i)?'✓':String(i+1).padStart(2,'0');const info=document.createElement('span');info.className='ltext';const t=document.createElement('div');t.className='ltitle';t.textContent=l.short;const sub=document.createElement('div');sub.className='lsub';sub.textContent=l.tag;info.append(t,sub);b.append(n,info);b.addEventListener('click',()=>selectLesson(i));nav.append(b);const op=new Option(`${String(i+1).padStart(2,'0')}　${l.short}`,i);sel.add(op)});sel.value=String(selected);updateProgress()}
+function selectLesson(i){if(i<0||i>=lessons.length)return;stopAudio();selected=i;safeSet('iec_lesson_v1',i);transcriptShown=false;choicesByLesson[i]=choicesByLesson[i]||{};renderLesson();renderLessonNav();}
+function renderLesson(){const l=lessons[selected];$('lessonLabel').textContent=`LESSON ${String(selected+1).padStart(2,'0')} / ${String(lessons.length).padStart(2,'0')}`;$('lessonTitle').textContent=l.title;$('lessonContext').textContent=l.context;$('tagTopic').textContent=l.tag;$('wordCount').textContent=`約 ${l.lines.map(x=>x[0]).join(' ').split(/\s+/).length} words`;$('tip').textContent=l.tip;
+$('memo').value=safeGet('iec_memo_v1_'+selected,'');$('completeBtn').textContent=completed.includes(selected)?'✓ 完了済み（押すと解除）':'✓ このレッスンを完了にする';$('completeBtn').classList.toggle('done',completed.includes(selected));renderScript();renderPhraseList();renderQuiz();syncMode();setStatus('▶ を押すと読み上げます');}
+function renderScript(){$('showTranscript').textContent=transcriptShown?'英文を隠す':'英文を表示';$('showTranscript').setAttribute('aria-expanded',String(transcriptShown));$('hiddenTranscript').classList.toggle('hidden',transcriptShown);$('scriptLines').classList.toggle('hidden',!transcriptShown);$('scriptLines').innerHTML='';if(transcriptShown){lessons[selected].lines.forEach(([eng,jp],i)=>{const row=document.createElement('div');row.className='script-row';const num=document.createElement('span');num.className='script-num';num.textContent=String(i+1).padStart(2,'0');const body=document.createElement('div');const en=document.createElement('div');en.className='en';en.textContent=eng;const ja=document.createElement('div');ja.className='jp';ja.textContent=jp;body.append(en,ja);row.append(num,body);$('scriptLines').append(row)})}}
+function renderPhraseList(){const target=$('phraseList');target.innerHTML='';lessons[selected].lines.forEach((line,i)=>{const b=document.createElement('button');b.type='button';b.className='phrasebtn';b.textContent=`▶ ${String(i+1).padStart(2,'0')} 文目`;b.title=`${i+1}文目を再生`;b.addEventListener('click',()=>startPlaying([line[0]],`${i+1}文目`,{type:'phrase',index:i}));target.append(b)})}
+function renderQuiz(){const l=lessons[selected];const target=$('quizItems');target.innerHTML='';const history=choicesByLesson[selected]||{};l.qs.forEach((q,i)=>{const wrap=document.createElement('div');wrap.className='quizitem';const top=document.createElement('div');top.className='qtop';const lab=document.createElement('span');lab.className='qno';lab.textContent=`QUESTION 0${i+1}`;const speak=document.createElement('button');speak.type='button';speak.className='qspeak';speak.textContent='▶ 質問を聴く';speak.addEventListener('click',()=>startPlaying([q.text],`質問 ${i+1}`,{type:'question',index:i}));top.append(lab,speak);wrap.append(top);const opts=document.createElement('div');opts.className='choices';q.choices.forEach((choice,j)=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=`${String.fromCharCode(65+j)}. ${choice}`;if(history[i]!==undefined){if(j===q.correct)b.classList.add('right');else if(j===history[i])b.classList.add('wrong')}b.addEventListener('click',()=>{history[i]=j;choicesByLesson[selected]=history;renderQuiz()});opts.append(b)});wrap.append(opts);if(history[i]!==undefined){const f=document.createElement('div');f.className='qfeedback';f.textContent=`${history[i]===q.correct?'✓ 正解です。':'答えは緑の選択肢です。'} ${q.why}`;wrap.append(f)}const reveal=document.createElement('button');reveal.type='button';reveal.className='softbtn';reveal.style.marginTop='10px';reveal.style.padding='5px 10px';reveal.textContent='質問の英文を見る';reveal.setAttribute('aria-expanded','false');const qt=document.createElement('div');qt.className='qreveal hidden';qt.textContent=q.text;reveal.addEventListener('click',()=>{const visible=qt.classList.toggle('hidden');reveal.textContent=visible?'質問の英文を見る':'質問の英文を隠す';reveal.setAttribute('aria-expanded',String(!visible))});wrap.append(reveal,qt);target.append(wrap)})}
+function syncMode(){document.querySelectorAll('.modebtn').forEach(b=>{const active=b.dataset.mode===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});$('phraseArea').classList.toggle('hidden',mode!=='phrases');$('qaIntro').classList.toggle('hidden',mode!=='qa');}
+function setMode(next){stopAudio();mode=next;syncMode();setStatus(next==='phrases'?'下の番号を押すと1文だけ聴けます':next==='qa'?'質問を通しで聴くか、クイズ欄から1問ずつ再生できます':'▶ を押すと会議発言を通して聴けます')}
+function setStatus(s){$('audioStatus').textContent=s}
+function updatePlayer(){const p=$('playBtn');p.textContent=playing?(paused?'▶':'Ⅱ'):'▶';p.setAttribute('aria-label',playing?(paused?'再開':'一時停止'):'再生');$('wave').classList.toggle('active',playing&&!paused)}
+function stopAudio(showStatus=true){token++;if(pendingTimer){clearTimeout(pendingTimer);pendingTimer=null}try{if(hasSpeech)window.speechSynthesis.cancel()}catch(e){}playing=false;paused=false;playItems=[];updatePlayer();if(showStatus)setStatus('停止しました')}
+function startPlaying(items,label,source={type:'full'}){if(!hasSpeech){setStatus('このブラウザは音声読み上げに対応していません。ChromeまたはEdgeで開いてください。');return}stopAudio(false);playItems=items.filter(Boolean);if(!playItems.length)return;playLabel=label;playIndex=0;loopIndex=0;lastPlay=source;playMode=source.type;playing=true;paused=false;updatePlayer();const t=token;playNext(t)}
+function playNext(t){if(t!==token||!playing||paused)return;const repeats=Math.max(1,Number($('repeatCount').value)||1);if(playIndex>=playItems.length){playIndex=0;loopIndex++;if(loopIndex>=repeats){playing=false;paused=false;updatePlayer();setStatus(`${playLabel}：${repeats}回の再生が終わりました`);return}setStatus(`${playLabel}：${loopIndex+1} / ${repeats} 回目`);pendingTimer=setTimeout(()=>{pendingTimer=null;playNext(t)},850);return}
+let text=playItems[playIndex];const ut=new SpeechSynthesisUtterance(sayClean(text));ut.lang='en-US';ut.rate=Number($('speed').value);ut.pitch=1;ut.volume=1;const key=$('voiceSelect').value;const chosen=currentVoiceList.find(v=>v.voiceURI===key);if(chosen)ut.voice=chosen;
+const index=playIndex;setStatus(`${playLabel}：${loopIndex+1} / ${repeats} 回目${playItems.length>1?' · '+(index+1)+'/'+playItems.length+' 文':''}`);
+ut.onend=()=>{if(t!==token||!playing)return;playIndex++;pendingTimer=setTimeout(()=>{pendingTimer=null;playNext(t)},playItems.length>1?110:180)};
+ut.onerror=e=>{if(t!==token||!playing)return;if(e.error==='interrupted'||e.error==='canceled')return;playing=false;paused=false;updatePlayer();setStatus(`音声を再生できませんでした（${e.error||'音声エラー'}）。別の英語音声を選んでください。`)};
+try{window.speechSynthesis.speak(ut)}catch(e){playing=false;paused=false;updatePlayer();setStatus('音声の再生に失敗しました。別のブラウザをお試しください。')}
+}
+function mainPlay(){if(playing){if(paused){paused=false;try{window.speechSynthesis.resume()}catch(e){}updatePlayer();setStatus('再生を再開しました');if(pendingTimer===null&&!window.speechSynthesis.speaking)playNext(token)}else{paused=true;try{window.speechSynthesis.pause()}catch(e){}updatePlayer();setStatus('一時停止中')}return}
+if(mode==='full')startPlaying(lessons[selected].lines.map(x=>x[0]),'会議発言',{type:'full'});
+else if(mode==='phrases')startPlaying([lessons[selected].lines[0][0]],'1文目',{type:'phrase',index:0});
+else startPlaying(lessons[selected].qs.map(x=>x.text),'会議の質問',{type:'qa'});
+}
+function restart(){if(lastPlay.type==='phrase'){const n=lastPlay.index||0;startPlaying([lessons[selected].lines[n][0]],`${n+1}文目`,lastPlay)}else if(lastPlay.type==='question'){const n=lastPlay.index||0;startPlaying([lessons[selected].qs[n].text],`質問 ${n+1}`,lastPlay)}else if(mode==='qa')startPlaying(lessons[selected].qs.map(q=>q.text),'会議の質問',{type:'qa'});else if(mode==='phrases')startPlaying([lessons[selected].lines[0][0]],'1文目',{type:'phrase',index:0});else startPlaying(lessons[selected].lines.map(l=>l[0]),'会議発言',{type:'full'})}
+function populateVoices(){if(!hasSpeech)return;const prev=$('voiceSelect').value||safeGet('iec_voice_v1','');const all=window.speechSynthesis.getVoices();const english=all.filter(v=>(v.lang||'').toLowerCase().startsWith('en'));english.sort((a,b)=>{const aUS=/^en[-_]us/i.test(a.lang)?0:1;const bUS=/^en[-_]us/i.test(b.lang)?0:1;return aUS-bUS||a.name.localeCompare(b.name)});currentVoiceList=english;const sel=$('voiceSelect');sel.innerHTML='';sel.add(new Option('ブラウザの標準音声',''));english.forEach(v=>sel.add(new Option(`${v.name} (${v.lang})`,v.voiceURI)));
+if(english.some(v=>v.voiceURI===prev))sel.value=prev;else{const us=english.find(v=>/^en[-_]us/i.test(v.lang));if(us)sel.value=us.voiceURI;else if(english.length)sel.value=english[0].voiceURI} }
+$('playBtn').addEventListener('click',mainPlay);$('restartBtn').addEventListener('click',restart);$('stopBtn').addEventListener('click',()=>stopAudio());$('showTranscript').addEventListener('click',()=>{transcriptShown=!transcriptShown;renderScript()});$('speed').addEventListener('input',()=>{$('speedValue').textContent=`${Number($('speed').value).toFixed(2)}×`});$('voiceSelect').addEventListener('change',()=>safeSet('iec_voice_v1',$('voiceSelect').value));$('memo').addEventListener('input',()=>safeSet('iec_memo_v1_'+selected,$('memo').value));$('completeBtn').addEventListener('click',()=>{if(completed.includes(selected))completed=completed.filter(i=>i!==selected);else completed.push(selected);safeSet('iec_completed_v1',completed);renderLessonNav();renderLesson()});$('mobileLesson').addEventListener('change',e=>selectLesson(Number(e.target.value)));document.querySelectorAll('.modebtn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||e.repeat)return;const tg=(e.target.tagName||'').toLowerCase();if(['input','textarea','select','button'].includes(tg))return;if(e.code==='Space'){e.preventDefault();mainPlay()}else if(e.key.toLowerCase()==='r'){restart()}else if(e.key.toLowerCase()==='h'){transcriptShown=!transcriptShown;renderScript()}});
+if(hasSpeech){populateVoices();window.speechSynthesis.addEventListener?.('voiceschanged',populateVoices)}else{setStatus('このブラウザは音声合成に対応していません。ChromeまたはEdgeで開いてください。');$('playBtn').disabled=true}
+window.addEventListener('pagehide',()=>{try{if(hasSpeech)window.speechSynthesis.cancel()}catch(e){}});
+renderLessonNav();renderLesson();
+</script>
+</body>
+</html>
